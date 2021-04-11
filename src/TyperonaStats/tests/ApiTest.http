@@ -1,0 +1,149 @@
+POST http://localhost/api/players HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "feri",
+    "score": 46,
+    "mistakes": 8,
+    "WPM": 24.2
+}
+
+###
+GET http://localhost/api/players HTTP/1.1
+Accept: application/json
+
+###
+
+POST http://localhost/api/typing_seq HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "test",
+    "score": 10,
+    "mistakes": 0,
+    "WPM": 10.54368782043457,
+    "wordSequences": {
+        "typingSequences": [
+            {
+                "Word": "vlasy",
+                "Sequence": [
+                    {
+                        "Letter": "v",
+                        "Time": "14:50:44.812714"
+                    },
+                    {
+                        "Letter": "l",
+                        "Time": "14:50:44.925714"
+                    },
+                    {
+                        "Letter": "a",
+                        "Time": "14:50:44.994714"
+                    },
+                    {
+                        "Letter": "s",
+                        "Time": "14:50:45.061714"
+                    },
+                    {
+                        "Letter": "y",
+                        "Time": "14:50:45.235713"
+                    }
+                ]
+            },
+            {
+                "Word": "strom",
+                "Sequence": [
+                    {
+                        "Letter": "s",
+                        "Time": "14:50:48.003057"
+                    },
+                    {
+                        "Letter": "t",
+                        "Time": "14:50:48.118153"
+                    },
+                    {
+                        "Letter": "r",
+                        "Time": "14:50:48.291035"
+                    },
+                    {
+                        "Letter": "o",
+                        "Time": "14:50:48.405034"
+                    },
+                    {
+                        "Letter": "m",
+                        "Time": "14:50:48.495034"
+                    }
+                ]
+            },
+            {
+                "Word": "šikovný",
+                "Sequence": [
+                    {
+                        "Letter": "š",
+                        "Time": "14:50:49.782285"
+                    },
+                    {
+                        "Letter": "i",
+                        "Time": "14:50:49.851755"
+                    },
+                    {
+                        "Letter": "k",
+                        "Time": "14:50:50.037898"
+                    },
+                    {
+                        "Letter": "o",
+                        "Time": "14:50:50.125986"
+                    },
+                    {
+                        "Letter": "v",
+                        "Time": "14:50:50.679793"
+                    },
+                    {
+                        "Letter": "n",
+                        "Time": "14:50:50.760446"
+                    },
+                    {
+                        "Letter": "ý",
+                        "Time": "14:50:50.888446"
+                    }
+                ]
+            },
+            {
+                "Word": "topánka",
+                "Sequence": [
+                    {
+                        "Letter": "t",
+                        "Time": "14:50:59.446003"
+                    },
+                    {
+                        "Letter": "o",
+                        "Time": "14:50:59.755003"
+                    },
+                    {
+                        "Letter": "p",
+                        "Time": "14:50:59.840568"
+                    },
+                    {
+                        "Letter": "á",
+                        "Time": "14:51:00.029570"
+                    },
+                    {
+                        "Letter": "n",
+                        "Time": "14:51:00.202568"
+                    },
+                    {
+                        "Letter": "k",
+                        "Time": "14:51:00.372116"
+                    },
+                    {
+                        "Letter": "a",
+                        "Time": "14:51:00.559114"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+
+
+###

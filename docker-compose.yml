@@ -10,9 +10,10 @@ services:
       dockerfile: nginx.dockerfile
     container_name: nginx
     ports:
+      #- '${APP_PORT:-80}:80'
       - 80:80
     volumes:
-      - ./src:/var/www/html:delegated
+      - ./src/TyperonaStats:/var/www/html:delegated
     depends_on:
       - php
       - redis
@@ -22,17 +23,21 @@ services:
       - laravel
 
   mysql:
+    env_file:
+      - src\TyperonaStats\.env
     image: mysql:5.7.29
     container_name: mysql
     restart: unless-stopped
     tty: true
     ports:
       - 3306:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: homestead
-      MYSQL_USER: homestead
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: typerona_stats
+      MYSQL_USER: root
+      MYSQL_PASSWORD: typerona
+      MYSQL_ROOT_PASSWORD: typerona
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
@@ -44,7 +49,7 @@ services:
       dockerfile: php.dockerfile
     container_name: php
     volumes:
-      - ./src:/var/www/html:delegated
+      - ./src/TyperonaStats:/var/www/html:delegated
     networks:
       - laravel
 
@@ -63,7 +68,7 @@ services:
       dockerfile: composer.dockerfile
     container_name: composer
     volumes:
-      - ./src:/var/www/html
+      - ./src/TyperonaStats:/var/www/html
     working_dir: /var/www/html
     depends_on:
       - php
@@ -76,7 +81,7 @@ services:
     image: node:13.7
     container_name: npm
     volumes:
-      - ./src:/var/www/html
+      - ./src/TyperonaStats:/var/www/html
     working_dir: /var/www/html
     entrypoint: ['npm']
     networks:
@@ -88,7 +93,7 @@ services:
       dockerfile: php.dockerfile
     container_name: artisan
     volumes:
-      - ./src:/var/www/html:delegated
+      - ./src/TyperonaStats:/var/www/html:delegated
     depends_on:
       - mysql
     working_dir: /var/www/html
