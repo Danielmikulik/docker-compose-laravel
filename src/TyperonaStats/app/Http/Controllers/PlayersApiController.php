@@ -14,7 +14,14 @@ class PlayersApiController extends Controller
 
     public function allPlayers()
     {
-        return Player::all();
+        //return Player::all();
+        return Player::query()->join('type_logs', 'players.id', '=', 'type_logs.player_id')->get();
+    }
+
+    public function playersFromDate(string $date)
+    {
+        $timestamp =  date("Y-m-d", strtotime($date));
+        return Player::query()->join('type_logs', 'players.id', '=', 'type_logs.player_id')->where('players.created_at', '>', $timestamp)->get();
     }
 
     public function store(Request $request)

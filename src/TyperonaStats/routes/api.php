@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PlayersApiController;
-use App\Http\Controllers\TypeLogsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/players', [PlayersApiController::class, 'index']);
 Route::get('/all_players', [PlayersApiController::class, 'allPlayers']);
+Route::get('/all_players/{date}', [PlayersApiController::class, 'playersFromDate']);
 Route::post('/players', [PlayersApiController::class, 'store']);
-Route::post('/typing_seq', [TypeLogsController::class, 'store']);
 
 

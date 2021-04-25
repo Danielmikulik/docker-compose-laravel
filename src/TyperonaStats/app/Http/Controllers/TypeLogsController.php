@@ -21,6 +21,7 @@ class TypeLogsController extends Controller
         foreach ($typingSequencesArray['wordSequences']['typingSequences'] as $seq) {
             $word = $seq['Word'];
             $type_sequence = $seq['Sequence'];
+            //$cleanSequence = str_replace('"\"', '', $type_sequence);
             TypeLog::create([
                 'player_id' => $player_id,
                 'word' => $word,
