@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/players', [PlayersApiController::class, 'index']);
 Route::get('/all_players', [PlayersApiController::class, 'allPlayers']);
 Route::get('/all_players/{date}', [PlayersApiController::class, 'playersFromDate']);
+Route::get('/statistics', [PlayersApiController::class, 'getStatistics']);
 Route::post('/players', [PlayersApiController::class, 'store']);
 
 

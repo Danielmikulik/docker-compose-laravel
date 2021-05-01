@@ -8,25 +8,23 @@ use Illuminate\Http\Request;
 
 class TypeLogsController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, int $player_id)
     {
         request()->validate([
             'wordSequences' => 'required',
         ]);
 
         $typingSequencesArray = json_decode($request->getContent(), true);
-        $player_id = Player::max('id');
-
 
         foreach ($typingSequencesArray['wordSequences']['typingSequences'] as $seq) {
             $word = $seq['Word'];
             $type_sequence = $seq['Sequence'];
-            //$cleanSequence = str_replace('"\"', '', $type_sequence);
             TypeLog::create([
                 'player_id' => $player_id,
                 'word' => $word,
                 'type_sequence' => $type_sequence
             ]);
         }
+        return response();
     }
 }

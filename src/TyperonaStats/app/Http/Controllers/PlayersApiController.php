@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use App\Models\TypeLog;
 use Illuminate\Http\Request;
 
 class PlayersApiController extends Controller
@@ -34,7 +35,24 @@ class PlayersApiController extends Controller
         ]);
 
         Player::create($request->all());
-        (new TypeLogsController())->store($request);
+        $player_id = Player::max('id');
+        (new TypeLogsController())->store($request, $player_id);
         return response();
+    }
+
+    public function getStatistics()
+    {
+        $totalGames = Player::all()->count();
+        $totalWords = TypeLog::all()->count();
+        $totalMistakes = (int)Player::query()->sum('mistakes');
+        $maxWPM = Player::max('WPM');
+        $maxScore = Player::max('score');
+        return response()->json([
+            'gameCount' => $totalGames,
+            'wordCount' => $totalWords,
+            'mistakeCount' => $totalMistakes,
+            'maxScore' => $maxScore,
+            'maxWordsPerMinute' => $maxWPM
+        ]);
     }
 }
