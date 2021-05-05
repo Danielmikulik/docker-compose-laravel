@@ -25,6 +25,5 @@ class TypeLogsController extends Controller
                 'type_sequence' => $type_sequence
             ]);
         }
-        return response();
     }
 }
